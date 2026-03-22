@@ -2,7 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowUpRight, Github } from "lucide-react";
 import Link from "next/link";
-import { unstable_noStore as noStore } from "next/cache";
+import { headers } from "next/headers";
 
 const HERO_MESSAGES = [
   {
@@ -27,10 +27,20 @@ const HERO_MESSAGES = [
   },
 ] as const;
 
-export const HeroSection = () => {
-  noStore();
-  const selectedMessage =
-    HERO_MESSAGES[Math.floor(Math.random() * HERO_MESSAGES.length)];
+function getMessageIndex(seed: string) {
+  let hash = 0;
+
+  for (const char of seed) {
+    hash = (hash * 31 + char.charCodeAt(0)) >>> 0;
+  }
+
+  return hash % HERO_MESSAGES.length;
+}
+
+export const HeroSection = async () => {
+  const requestHeaders = await headers();
+  const seed = `${requestHeaders.get("user-agent") ?? ""}:${requestHeaders.get("accept-language") ?? ""}`;
+  const selectedMessage = HERO_MESSAGES[getMessageIndex(seed)];
 
   return (
     <section className="container w-full" style={{ marginTop: "100px" }}>
