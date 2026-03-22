@@ -67,7 +67,7 @@ export const HeroSection = async () => {
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Button
               size="lg"
-              className="group/arrow h-14 w-full max-w-xs rounded-2xl border border-transparent bg-gradient-to-r from-foreground via-foreground to-muted-foreground px-7 text-base font-semibold text-background shadow-[0_24px_50px_-28px_rgba(0,0,0,0.7)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_32px_70px_-32px_rgba(0,0,0,0.85)]"
+              className="group/arrow h-14 w-full max-w-xs rounded-2xl border border-foreground/10 bg-foreground px-7 text-base font-semibold text-background shadow-[0_22px_45px_-28px_rgba(0,0,0,0.62)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-foreground/95 hover:shadow-[0_30px_70px_-34px_rgba(0,0,0,0.78)]"
             >
               Get Started
               <ArrowRight className="ml-2 size-5 transition-transform duration-300 group-hover/arrow:translate-x-1" />
