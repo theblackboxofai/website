@@ -133,6 +133,18 @@ export const Navbar = () => {
       {/* <!-- Desktop --> */}
       <NavigationMenu className="mx-auto hidden lg:block">
         <NavigationMenuList className="gap-1 rounded-2xl border border-border/70 bg-muted/35 p-1">
+        <NavigationMenuItem>
+            {routeList.map(({ href, label }) => (
+              <NavigationMenuLink key={href} asChild>
+                <Link
+                  href={href}
+                  className="rounded-xl px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-background hover:text-foreground"
+                >
+                  {label}
+                </Link>
+              </NavigationMenuLink>
+            ))}
+          </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuTrigger className="h-10 rounded-xl bg-transparent px-4 text-sm font-medium text-muted-foreground hover:bg-background hover:text-foreground data-[state=open]:bg-background data-[state=open]:text-foreground">
               Blog
@@ -140,7 +152,7 @@ export const Navbar = () => {
             <NavigationMenuContent>
               <div className="grid w-[640px] grid-cols-[1.1fr_1fr] gap-4 overflow-visible rounded-2xl bg-popover p-4">
                 <Link
-                  href="https://example.com"
+                  href="https://ghost-production-d561.up.railway.app/introducing-the-black-box/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="peer/panel group/panel relative z-10 block w-full origin-left overflow-hidden rounded-2xl border border-border/70 bg-foreground p-6 text-background shadow-[0_24px_60px_-36px_rgba(0,0,0,0.7)] transition-[width,transform,box-shadow] duration-300 ease-out hover:z-20 hover:w-[calc(100%+140px)] hover:-translate-x-1 hover:shadow-[0_40px_100px_-34px_rgba(0,0,0,0.82)]"
@@ -195,19 +207,6 @@ export const Navbar = () => {
                 </ul>
               </div>
             </NavigationMenuContent>
-          </NavigationMenuItem>
-
-          <NavigationMenuItem>
-            {routeList.map(({ href, label }) => (
-              <NavigationMenuLink key={href} asChild>
-                <Link
-                  href={href}
-                  className="rounded-xl px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-background hover:text-foreground"
-                >
-                  {label}
-                </Link>
-              </NavigationMenuLink>
-            ))}
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
